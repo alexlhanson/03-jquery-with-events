@@ -77,15 +77,10 @@ articleView.handleMainNav = function() {
   // DONE: Add an event handler to nav elements that will power the Tabs feature.
   // Clicking any .tab element should hide all the .tab-content sections, and then reveal the single .tab-content section that is associated with the clicked .tab element.
   // So: You need to dynamically build a selector string with the correct ID, based on the data available to you on the .tab element that was clicked.
-  $('nav .tab:first').on('click',function(){
-    $('.tab-content').fadeIn();
-    $('#about').hide();
-  })
-
-  $('nav .tab:first ~ li').on('click',function(){
+  $('nav .tab').on('click', function(){
     $('.tab-content').hide();
-    $('#about').fadeIn();
-
+    console.log($(this).data('content'));
+    $(`#${($(this).data('content'))}`).fadeIn();
   })
   // REVIEW: Now trigger a click on the first .tab element, to set up the page.
   $('nav .tab:first').click();
